@@ -1,7 +1,1 @@
-1.Take out all the socks
-2. Randomly take one sock 
-3. Compare it with any other random sock
-4. Leave the bigger one and compare the smaller one with another random sock
-5. Repeat it until the smallest sock is found
-6. Place the smallest sock in the first drawer
-7. Now repeat the same for the other drawers in ascending order until all the socks are placed in the twelve drawers
+
