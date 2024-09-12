@@ -1,0 +1,180 @@
+Q1: 
+#include <stdio.h>
+int main()
+{int num;
+printf("Enter a number: ");
+scanf("%d", &num);
+if(num%3 == 0)
+{printf("%d is a multiple of 3", num);}
+else
+{printf("%d is not a multiple of 3", num);}
+}
+
+Q2:
+#include <stdio.h>
+
+int main()
+{int num;
+printf("Enter a number: ");
+scanf("%d", &num);
+if((num>0) && (num%2==0) &&(num%10==0))
+{printf("Number is valid");}
+else
+{printf("Number is invalid");}
+}
+
+Q3:
+#include <stdio.h>
+
+int main()
+{int num1, num2;
+char op;
+float ans;
+printf("Enter 1st number: ");
+scanf("%d", &num1);
+printf("Enter 2nd number: ");
+scanf("%d", &num2);
+printf("Enter operator('+','-','*','/'): ");
+scanf(" %c", &op);
+
+switch(op){
+    case '+':
+        ans = num1 + num2;
+        printf("%d + %d = %.1f",num1,num2,ans);
+        break;
+    case '-':
+        ans = num1 - num2;
+        printf("%d - %d = %.1f",num1,num2,ans);
+        break;
+    case '*':
+        ans = num1 * num2;
+        printf("%d * %d = %.1f",num1,num2,ans);
+        break;
+    case '/':
+        ans = num1 / num2;
+        printf("%d/%d = %.1f",num1,num2,ans);
+        break;
+    default:
+        printf("Invalid Input");
+}
+}
+Q4:
+#include <stdio.h>
+
+int main()
+{char character;
+printf("Enter a character: ");
+scanf("%c", &character);
+
+if((character >= 'a') && (character <= 'z'))
+{printf("The character given is a small alphabet");}
+else if((character >= 'A') && (character <= "Z"))
+{printf("The character given is a capital alphabet");}
+else if((character >= '0') && (character <= '9'))
+{printf("The character given is a digit");}
+else
+{printf("The character given is a special character");}
+}
+
+Q5:
+#include <stdio.h>
+
+int main()
+{float ta, sa, da;
+printf("Enter the total amount of items: ");
+scanf("%f", &ta);
+
+if(ta < 500)
+{printf("Not eligible for discount");}
+{da = ta*0.9;
+else if((ta < 2000) && (ta >= 500))
+{da = ta*0.95;
+sa = ta - da;
+printf("Your discounted amount is $%.2f and you saved $%.2f",da,sa);}
+else if((ta < 4000) && (ta >= 2000))
+sa = ta - da;
+printf("Your discounted amount is $%.2f and you saved $%.2f",da,sa);}
+else if((ta < 6000) && (ta >= 4000))
+{da = ta*0.8;
+sa = ta - da;
+printf("Your discounted amount is $%.2f and you saved $%.2f",da,sa);}
+else if((ta >= 6000))
+{da = ta*0.65;
+sa = ta - da;
+printf("Your discounted amount is $%.2f and you saved $%.2f",da,sa);}
+else
+{printf("Invalid input");}
+}
+
+Q6:
+#include <stdio.h>
+
+int main()
+{int c_id, units; 
+float amount, surcharge, netamount;
+printf("Enter your Customer ID: ");
+scanf("%d", &c_id);
+printf("Enter units consumed: ");
+scanf("%d", &units);
+
+if(units <= 199)
+{amount = units*16.20;
+printf("Customer ID: %d \nUnits Consumed: %d \nAmount to be paid: $%.2f",c_id,units,amount);}
+else if((units >= 200) && (units < 300))
+{amount = units*20.10;
+printf("Customer ID: %d \nUnits Consumed: %d \nAmount to be paid: $%.2f",c_id,units,amount);}
+else if((units >= 300) && (units < 500))
+{amount = units*27.10;
+printf("Customer ID: %d \nUnits Consumed: %d \nAmount to be paid: $%.2f",c_id,units,amount);}
+else if(units >= 500)
+{amount = units*35.90;
+if(amount > 18000)
+    {surcharge = amount*0.15;
+    netamount = amount + surcharge;
+    printf("Customer ID: %d \nUnits Consumed: %d \nAmount: %.2f \nSurcharge: %.2f \nTotal Amount Payable: %.2f",c_id,units,amount,surcharge,netamount);}
+else
+{printf("Customer ID: %d \nUnits Consumed: %d \nAmount to be paid: $%.2f",c_id,units,amount);}}
+else
+{printf("Invalid Input");}
+}
+
+Q7:
+#include <stdio.h>
+
+int main()
+{int n;
+printf("Enter a positive integer: ");
+scanf("%d", &n);
+
+switch(n){
+    case 1:
+    printf("one");
+    break;
+    case 2:
+    printf("two");
+    break;
+    case 3:
+    printf("three");
+    break;
+    case 4:
+    printf("four");
+    break;
+    case 5:
+    printf("five");
+    break;
+    case 6:
+    printf("six");
+    break;
+    case 7:
+    printf("seven");
+    break;
+    case 8:
+    printf("eight");
+    break;
+    case 9:
+    printf("nine");
+    break;
+    default:
+    printf("Greater than 9");
+}
+}
