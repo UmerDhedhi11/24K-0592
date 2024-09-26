@@ -1,1 +1,177 @@
+Q1: 
+#include <stdio.h>
+
+int main()
+{float cal, fatg, fatcal, fatcalper;
+printf("Enter the total calories in the food: ");
+scanf("%f", &cal);
+printf("Enter the grams of fat present in the food: ");
+scanf("%f", &fatg);
+if(cal<=0 || fatg<=0)
+{printf("Invalid Input");}
+
+fatcal = fatg*9;
+
+if(fatcal > cal)
+{printf("Invalid grams of fat");}
+
+fatcalper = (fatcal/cal)*100;
+
+printf("You are having %.2f percent calories in your food through fats", fatcalper);
+}
+
+Q2:
+#include <stdio.h>
+
+int main()
+{char day, vac;
+int weekday, vacation;
+
+printf("Enter a day:\n'M' for Monday\n'T' for Tuesday\n'W' for Wednesday\n'U' for Thursday\n'F' for Friday\n'S' for Saturday\n'N' for Sunday: ");
+scanf(" %c", &day);
+printf("Enter 'V' if you are on Vacation and 'N' if not on vacation: ");
+scanf(" %c", &vac);
+
+if((day == 'M') || (day == 'T') || (day == 'W') || (day == 'U') || (day == 'F'))
+{weekday = 1;}
+else
+{weekday = 0;}
+
+if(vac == 'V')
+{vacation = 1;}
+else
+{vacation = 0;}
+
+if(((weekday == 0) && (vacation == 0)) || ((weekday == 0) && (vacation == 1)) || ((weekday == 1) && (vacation == 1)))
+{printf("You can sleep");}
+else
+{printf("You can not sleep");}
+}
+
+Q3:
+#include <stdio.h>
+
+int main()
+{char coffeetype, cupsize, make;
+int maketime;
+
+printf("Enter 'B' for Black coffee and 'W' for White coffee: ");
+scanf(" %c", &coffeetype);
+printf("Do you want double coffee? 'Y' for Yes 'N' for No: ");
+scanf(" %c", &cupsize);
+printf("Do you want automatic making or make it manually? 'M' for Manual 'A' for Auto: ");
+scanf(" %c", &make);
+
+switch(coffeetype){
+    case 'B':
+        switch(cupsize){
+            case 'Y':
+                switch(make){
+                    case 'M':
+                        printf("First pour hot water\nThen add sugar\nNow mix both well\nAfter that add coffee and mix well");
+                        break;
+                    case 'A':
+                        maketime = (20 + 20 + 25 + 15 + 25)*1.5;
+                        printf("You have to wait for %d minutes", maketime);
+                        break;
+                }
+            break;
+            case 'N':
+                switch(make){
+                    case 'M':
+                        printf("First pour hot water\nThen add sugar\nNow mix both well\nAfter that add coffee and mix well");
+                        break;
+                    case 'A':
+                        maketime = (20 + 20 + 25 + 15 + 25);
+                        printf("You have to wait for %d minutes", maketime);
+                        break;
+                }
+            break;
+            }
+    break;        
+    case 'W':
+        switch(cupsize){
+            case 'Y':
+                switch(make){
+                    case 'M':
+                        printf("First pour hot water\nThen add sugar\nNow mix both well\nAfter that add coffee\n Now add milk and mix well");
+                        break;
+                    case 'A':
+                        maketime = (15 + 15 + 20 + 2 + 4 + 20)*1.5;
+                        printf("You have to wait for %d minutes", maketime);
+                        break;
+                }
+            break;
+            case 'N':
+                switch(make){
+                    case 'M':
+                        printf("First pour hot water\nThen add sugar\nNow mix both well\nAfter that add coffee\n Now add milk and mix well");
+                        break;
+                    case 'A':
+                        maketime = (15 + 15 + 20 + 2 + 4 + 20);
+                        printf("You have to wait for %d minutes", maketime);
+                        break;
+                }
+            break;
+            }
+    break;
+}
+}
+
+Q4:
+#include <stdio.h>
+
+int main(){
+float pHlevel;
+printf("Enter pH level: ");
+scanf("%f", &pHlevel);
+if(pHlevel<0 || pHlevel>14){
+    printf("Invalid pH level");}
+else{
+if(pHlevel > 7){
+    if(pHlevel < 12){
+        printf("Alkaline");
+    }
+    else{
+        printf("Very Alkaline");
+    }
+}
+else{
+    if(pHlevel == 7){
+        printf("Neutral");
+    }
+    else if(pHlevel > 2){
+        printf("Acidic");
+    }
+    else{
+        printf("Very Acidic");
+    }
+}
+}
+}
+
+Q5:
+#include <stdio.h>
+
+int main(){
+float gpa;
+printf("Enter GPA: ");
+scanf("%f", &gpa);
+
+(gpa>=0.00 && gpa<1.00) ? printf("Failed Semester-Registration Suspended") : (gpa>=1.00 && gpa<2.00) ? printf("On probation for next semester") : (gpa>=2.00 && gpa<3.00) ? printf(" ") : (gpa>=3.00 && gpa<3.50) ? printf("Dean's list for semester") : (gpa>=3.50 && gpa<=4.00) ? printf("Highest honours for semester") : printf("Invalid input");;;;;
+}
+
+Q6: The output is 30 because there is no input being taken to be stored in the variable 'x', hence, the program will go to the last else condition and execute it.
+
+Q7:
+#include <stdio.h>
+
+int main()
+{int num;
+printf("Enter a number: ");
+scanf("%d", &num);
+
+((num%10)==0)?printf("Last Digit is zero"):printf("Last digit is non-zero");
+
+}
 
