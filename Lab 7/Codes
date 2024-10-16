@@ -43,3 +43,67 @@ printf("a=%d, e=%d, i=%d, o=%d, u=%d", cta,cte,cti,cto,ctu);
 }
 
 Q3:
+#include <stdio.h>
+
+int main(){
+    char string[] = "Hello Everybody";
+    char *startp = string;
+    char *endp = string;
+    int l = 0;
+    char temp;
+    
+    while(*endp != '\0'){
+        endp++;
+    }
+    endp = endp - 1;
+    while(startp <= endp){
+        l++;
+        startp++;
+    }
+    printf("The length of string is %d\n", l);
+    startp = string;
+    while (startp < endp){
+        temp = *startp;
+        *startp = *endp;
+        *endp = temp;
+        startp += 1;
+        endp -= 1;
+    }
+    printf("The reversed string is: %s", string);
+}
+
+Q4:
+#include <stdio.h>
+
+int main() {
+    char str[20];
+    int x = 0,i = 0;
+    int pal;
+    printf("Enter a word: ");
+    scanf("%s", str);
+    
+    while(str[x] != '\0'){
+        x++;
+    }
+    x--;
+    while(i < x){
+        if(str[i] == str[x]){
+            pal = 1;
+            i++;
+            x--;
+        }
+        else{
+            pal = 0;
+            break;
+        }
+    }
+    if(pal == 1){
+        printf("%s is a palindrome", str);
+    }
+    else{
+        printf("%s is not a palindrome", str);
+    }
+}
+
+Q5:
+
