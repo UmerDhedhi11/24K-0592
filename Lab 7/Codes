@@ -15,3 +15,31 @@ printf("%d | ", arr[i]);
 }
 
 Q2:
+#include <stdio.h>
+
+int main(){
+char arr[11] = "Hello World";
+int cta = 0, cte = 0, cti = 0, cto = 0, ctu = 0, i;
+for(i=0;i<=10;i++){
+switch(arr[i]){
+case 'a':
+cta = cta + 1;
+break;
+case 'e':
+cte = cte + 1;
+break;
+case 'i':
+cti = cti + 1;
+break;
+case 'o':
+cto = cto + 1;
+break;
+case 'u':
+ctu = ctu + 1;
+break;
+}
+}
+printf("a=%d, e=%d, i=%d, o=%d, u=%d", cta,cte,cti,cto,ctu);
+}
+
+Q3:
