@@ -110,4 +110,53 @@ int main() {
 }
 
 Q5:
+#include <stdio.h>
+
+int main(){
+    int arr[10];
+    int freq[100] = {0};
+    int i;
+    printf("Enter a number between 0 and 99 inclusive: \n");
+    for(i=0;i<=9;i++){
+        scanf("%d", &arr[i]);
+        freq[arr[i]]++;
+    }
+    for(i=0;i<=99;i++){
+        if(freq[i]>0){
+            printf("\n%d: %d times\n", i, freq[i]);
+        }
+    }
+}
+
+Q6:
+#include <stdio.h>
+
+int main(){
+    int num[50];
+    int freq[50] = {0};
+    int n, i = 0, temp;
+    printf("Enter numbers between 1 and 49. Enter 0 when you are done: \n");
+    while(1){
+        scanf("%d", &temp);
+        if(temp == 0){
+            break;
+        }
+        else{
+            num[i] = temp;
+            i++;
+            n++;
+        }
+    }
+    for(i=0;i<=n;i++){
+        freq[num[i]]++;
+        if(num[i] != 0){
+            if(freq[num[i]] > 1){
+                printf("%d occurs more than once\n", num[i]);
+                num[i] = 0;
+            }
+        }    
+    }
+}
+
+Q7:
 
