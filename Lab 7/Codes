@@ -159,4 +159,73 @@ int main(){
 }
 
 Q7:
+#include <stdio.h>
 
+int main() {
+    int num[] = {2, 4, 6, 8, 4}; 
+    int n = 5; 
+    int i = 0;
+    int ind;
+    while (i < n) {
+        if (num[i] >= 0) {
+            ind = num[i];
+        } 
+        else {
+            ind = -num[i];
+        }
+        if (num[ind] >= 0) {
+            num[ind] = -num[ind];
+        } 
+        else {
+            printf("Number %d occurs more than once.\n", ind);
+            break;
+        }
+        i++;
+    }
+}
+
+
+Q8:
+#include <stdio.h>
+
+int main() {
+    char expression[50];
+    int result = 0;
+    int temp = 0;
+    int sign = 1;
+    int i = 0;
+    int n = 0;
+    printf("Enter an expression in the form of string without spaces: ");
+    scanf("%s", expression);
+    while (expression[n] != '\0') {
+        n++;
+    }
+
+    while (i < n) {
+        if (expression[i] >= '0' && expression[i] <= '9') {
+            temp = 0;
+            while (i < n && expression[i] >= '0' && expression[i] <= '9') {
+                temp = temp * 10 + (expression[i] - '0');
+                i++;
+            }
+            result += sign * temp;
+        } 
+        else if (expression[i] == '+') {
+            sign = 1;
+            i++;
+        } 
+        else if (expression[i] == '-') {
+            sign = -1;
+            i++;
+        } 
+        else {
+            printf("Invalid character in expression\n");
+        }
+    }
+    if (expression[n-1] == '+' || expression[n-1] == '-') {
+        printf("Invalid expression: Ends with an operator\n");
+    } 
+    else {
+        printf("Result: %d\n", result);
+    }
+}
