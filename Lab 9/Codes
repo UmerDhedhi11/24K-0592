@@ -1,0 +1,236 @@
+Q1:
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+int i, n, x, b;
+printf("Enter number of words to input to check for palindrome: ");
+scanf("%d", &n);
+char words[n][20], rev_arr[n][20];
+printf("\nEnter words line by line with a limit of 20 characters each: \n");
+for(i=0;i<n;i++){
+scanf("%s", words[i]);
+}
+for(i=0;i<n;i++){
+int c = strlen(words[i]);
+b = 0;
+for(x=c-1;x>=0;x--){
+rev_arr[i][b] = words[i][x];
+b++;
+}
+if(strcmp(words[i],rev_arr[i]) == 0){
+printf("%s is a palindrome\n", words[i]);
+}
+else{
+printf("%s is not a palindrome\n", words[i]);
+}
+}
+}
+
+
+Q2:
+#include <stdio.h>
+#include <string.h>
+
+void swapIntegers(int num[2]);
+
+int main(){
+int i, num[2];
+printf("Enter two numbers line by line: \n");
+for(i=0;i<2;i++){
+scanf("%d", &num[i]);
+}
+swapIntegers(num);
+}
+
+void swapIntegers(int num[2]){
+int i, temp;
+printf("Before swapping: %d,%d\n", num[0], num[1]);
+temp = num[0];
+num[0] = num[1];
+num[1] = temp;
+printf("After swapping: %d,%d", num[0], num[1]);
+}
+
+
+Q3:
+#include <stdio.h>
+#include <string.h>
+
+void check_prime(int num[], int count);
+
+int main(){
+int i, n;
+printf("Enter number of integers to check for prime: ");
+scanf("%d", &n);
+int arr[n];
+printf("Enter the %d numbers line by line to check for prime: \n");
+for(i=0;i<n;i++){
+scanf("%d", &arr[i]);
+}
+check_prime(arr, n);
+}
+
+void check_prime(int num[], int count){
+int i, x, hcf, checknum;
+for(i=0;i<count;i++){
+checknum = num[i];
+hcf = 0;
+for(x=1;x<checknum;x++){
+if((checknum%x) == 0){
+hcf = x;
+}
+}
+if(hcf == 1){
+printf("%d is a prime number\n", num[i]);
+}
+else{
+printf("%d is not a prime number\n", num[i]);
+}
+}
+}
+
+
+Q4:
+#include <stdio.h>
+#include <string.h>
+
+int calculate(int n1, int n2, char op);
+
+int main(){
+int num1, num2, res;
+char op;
+printf("Enter 1st number: ");
+scanf("%d", &num1);
+printf("Enter 2nd number: ");
+scanf("%d", &num2);
+printf("Enter operator to determine which task to perform('+', '-', '*', '/'): ");
+scanf(" %c", &op);
+res = calculate(num1, num2, op);
+printf("%d%c%d = %d", num1, op, num2, res);
+}
+
+int calculate(int n1, int n2, char op){
+switch(op){
+case '+':
+return n1 + n2;
+break;
+case '-':
+return n1 - n2;
+break;
+case '*':
+return n1*n2;
+break;
+case '/':
+return n1/n2;
+break;
+default:
+printf("Invalid input");
+}
+}
+
+
+Q5:
+#include <stdio.h>
+#include <string.h>
+
+void rev_str(char str[]);
+
+int main(){
+    char arr[50];
+    printf("Enter a string: ");
+    scanf("%s", arr);
+    if(strlen(arr) > 50){
+        printf("String length out of bounds");
+    }
+    else{
+        rev_str(arr);
+    }
+}
+
+void rev_str(char str[]){
+    int i, temp, count;
+    count = strlen(str) - 1;
+    for(i = 0;i < count;i++){
+        temp = str[i];
+        str[i] = str[count];
+        str[count] = temp;
+        count--;
+    }
+    printf("Reversed string is %s", str);
+}
+
+
+Q6:
+#include <stdio.h>
+
+void max_min(int num[], int count);
+
+int main(){
+    int i, n;
+    printf("Enter number of elements to input: ");
+    scanf("%d", &n);
+    int arr[n];
+    for(i = 0;i < n;i++){
+        printf("Enter element number %d: ", i+1);
+        scanf("%d", &arr[i]);
+        printf("\n");
+    }
+    max_min(arr, n);
+}
+
+void max_min(int num[], int count){
+    int max = 0, min = 100, i;
+    for(i = 0;i < count;i++){
+        if(num[i] > max){
+            max = num[i];
+        }
+    }
+    for(i = 0;i < count;i++){
+        if(num[i] < min){
+            min = num[i];
+        }
+    }
+    printf("Maximum element = %d, Minimum element = %d", max, min);
+}
+
+
+Q7:
+#include <stdio.h>
+
+void order_arr(char arr[][20], int cnt);
+
+int main(){
+    int i, n;
+    printf("Enter number of words to input: ");
+    scanf("%d", &n);
+    char str[n][20];
+    printf("Enter words line by line but the length limit is 20:\n");
+    for(i = 0;i < n;i++){
+        scanf("%s", str[i]);
+    }
+    order_arr(str, n);
+}
+
+void order_arr(char arr[][20], int cnt){
+    int i, a, temp, x = 0;
+    printf("Unordered array: \n");
+    for(i = 0;i < cnt;i++){
+        printf("%s, ", arr[i]);
+    }
+    printf("\n");
+    for(a = 0;a < cnt;a++){
+        for(i = 0;i < cnt - 1;i++){
+            if(arr[i][x] > arr[i + 1][x]){
+                temp = arr[i][x];
+                arr[i][x] = arr[i + 1][x];
+                arr[i + 1][x] = temp;
+            }
+        }
+    }
+    printf("Ordered array: \n");
+    for(i = 0;i < cnt;i++){
+        printf("%s, ", arr[i]);
+    }
+}
+
