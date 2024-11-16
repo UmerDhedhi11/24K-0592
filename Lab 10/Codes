@@ -1,0 +1,19 @@
+Q1:
+#include <stdio.h>
+
+void rec(int num[], int n);
+
+int main(){
+	int n = 10, arr[10] = {1, 5, 2, 8, 45, 34, 1, 6, 9, 10};
+	rec(arr, n);
+}
+
+void rec(int num[], int n){
+	if(n > 0){
+		rec(num, n-1);
+		printf("%d\n", num[n-1]);
+	}
+}
+
+
+Q2:
