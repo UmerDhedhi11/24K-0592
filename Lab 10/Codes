@@ -17,3 +17,101 @@ void rec(int num[], int n){
 
 
 Q2:
+
+Q4:
+#include <stdio.h>
+#include <string.h>
+
+struct Book{
+	char Title[30];
+	char Author[30];
+	int publication_year;
+	float price;
+};
+
+void displayBooks(struct Book arr[], int n);
+void searchBook(struct Book arr[], int n);
+void authorBooks(struct Book arr[], int n);
+
+int main(){
+	int n, i;
+	char f;
+	char s[30]; 
+	printf("Enter the number of books to be added: ");
+	scanf("%d", &n);
+	struct Book books[n];
+	for(i=0;i<n;i++){
+		printf("Enter the title of the Book: ");
+		scanf(" %[^\n]", books[i].Title);
+		printf("Enter the name of the author of the Book: ");
+		scanf(" %[^\n]", books[i].Author);
+		printf("Enter the publication year: ");
+		scanf("%d", &books[i].publication_year);
+		printf("Enter the price of the book: ");
+		scanf("%f", &books[i].price);
+	}
+	printf("Enter 'd' for displaying the books, 's' for search and 'a' for displaying books of an author: ");
+	scanf(" %c", &f);
+	if(f == 'd'){
+		displayBooks(books, n);
+	}
+	else if(f == 's'){
+		searchBook(books, n);
+	}
+	else if(f == 'a'){
+		authorBooks(books, n);
+	}
+}
+
+void displayBooks(struct Book arr[], int n){
+	int i;
+	for(i=0;i<n;i++){
+		printf("Book: %s,  ", arr[i].Title);
+		printf("Author: %s,  ", arr[i].Author);
+		printf("Year Published: %d,  ", arr[i].publication_year);
+		printf("Price: $%.2f \n", arr[i].price);
+	}
+}
+
+void searchBook(struct Book arr[], int n){
+	int i, found = 0;
+	char search[30];
+	printf("Enter book title to be searched: ");
+	scanf(" %[^\n]", search); 
+	for(i=0;i<n;i++){
+		if(strcmp(search, arr[i].Title) == 0){
+			found = 1;
+		}
+		if(found == 1){
+			break;
+		}
+	}
+	if(found == 0){
+		printf("Book record not found");
+	}
+	else{
+		printf("Book record found\n");
+		printf("Book: %s\n", arr[i].Title);
+		printf("Author: %s\n", arr[i].Author);
+		printf("Year Published: %d\n", arr[i].publication_year);
+		printf("Price: $%.2f", arr[i].price);
+	}
+}
+
+void authorBooks(struct Book arr[], int n){
+	int i, count = 0;
+	char name[30];
+	printf("Enter author name to be searched: ");
+	scanf(" %[^\n]", name); 
+	for(i=0;i<n;i++){
+		if(strcmp(name, arr[i].Author) == 0){
+			count++;
+			printf("Book: %s\n", arr[i].Title);
+			printf("Year Published: %d\n", arr[i].publication_year);
+			printf("Price: $%.2f\n", arr[i].price);
+		}
+	}
+	if(count == 0){
+		printf("No books by this author in the record");
+	}
+}
