@@ -1,0 +1,122 @@
+Q4:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct Marks{
+	float maths;
+	float science;
+	float english;
+};
+
+struct Student{
+	char roll_no[10];
+	char Name[30];
+	struct Marks marks;
+};
+
+int main(){
+	struct Student students[5];
+	int i;
+	float avg;
+	for(i=0;i<5;i++){
+		printf("Enter Roll Number for student %d: ", i+1);
+		scanf("%s", students[i].roll_no);
+		getchar();
+		printf("Enter Student %d name: ", i+1);
+		scanf(" %[^\n]s", students[i].Name);
+		printf("Enter Math marks: ");
+		scanf("%f", &students[i].marks.maths);
+		printf("Enter Science marks: ");
+		scanf("%f", &students[i].marks.science);
+		printf("Enter English marks: ");
+		scanf("%f", &students[i].marks.english);
+		printf("\n");
+	}
+	printf("\n");
+	for(i=0;i<5;i++){
+		avg = (students[i].marks.maths + students[i].marks.science + students[i].marks.english)/3;
+		printf("Average marks of %s = %.2f", students[i].Name, avg);
+		printf("\n");
+	}
+}
+
+
+Q5: 
+
+#include <stdio.h>
+
+struct Date{
+	int Day;
+	int Month;
+	int Year;
+};
+
+struct Event{
+	char event_name[30];
+	struct Date date;
+	char location[30];
+};
+
+int main(){
+	int n, i;
+	printf("Enter the number of events for which data is to be stored: ");
+	scanf("%d", &n);
+	struct Event events[n];
+	for(i=0;i<n;i++){
+		printf("Enter the Event name: ");
+		scanf(" %[^\n]s", events[i].event_name);
+		printf("Enter day in integer: ");
+		scanf("%d", &events[i].date.Day);
+		printf("Enter month in integer: ");
+		scanf("%d", &events[i].date.Month);
+		printf("Enter year in integer: ");
+		scanf("%d", &events[i].date.Year);
+		getchar();
+		printf("Enter the location name: ");
+		scanf(" %[^\n]s", events[i].location);
+		printf("\n");
+	}
+	printf("\n");
+	for(i=0;i<n;i++){
+		printf("Event Name: %s\n", events[i].event_name);
+		printf("Date: %d/%d/%d\n", events[i].date.Day, events[i].date.Month, events[i].date.Year);
+		printf("Location: %s\n", events[i].location);
+		printf("\n");
+	}
+}
+
+
+Q7:
+
+//Define a structure Company with fields name, year_established, and an array
+//departments containing the names of up to 5 departments. Write a program to display
+//company details including all departments.
+#include <stdio.h>
+
+struct Company{
+	char name[30];
+	int year_established;
+	char departments[5][30];
+};
+
+int main(){
+	struct Company comp;
+	int i;
+	printf("Enter Company Name: ");
+	scanf(" %[^\n]s", comp.name);
+	printf("Enter the Year in which it was established: ");
+	scanf("%d", &comp.year_established);
+	for(i=0;i<5;i++){
+		printf("Enter Department %d name: ", i+1);
+		scanf(" %[^\n]s", comp.departments[i]);
+	}
+	printf("Company Name: %s\nESTD.%d\n", comp.name, comp.year_established);
+	printf("Departments: \n");
+	for(i=0;i<5;i++){
+		printf("%s", comp.departments[i]);
+		printf("\n");
+	}
+	return 0;
+}
