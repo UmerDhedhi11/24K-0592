@@ -1,3 +1,41 @@
+Q1:
+
+#include <stdio.h>
+
+int main(){
+FILE *fptr = fopen("data.txt", "w");
+if(fptr == NULL){
+printf("Error in opening the file");
+}
+else{
+fprintf(fptr, "Hello World\n");
+fputc('U', fptr);
+fputc('m', fptr);
+fputc('e', fptr);
+fputc('r', fptr);
+fclose(fptr);
+}
+FILE *ptr1 = fopen("cover.txt", "w");
+fptr = fopen("data.txt", "r");
+if(fptr == NULL || ptr1 == NULL){
+printf("Error in opening the file");
+}
+else{char c;
+while(c = fgetc(fptr) != EOF){
+fputc(c, ptr1);
+}
+printf("Contents successfully copied");
+fclose(fptr);
+fclose(ptr1);
+}
+}
+
+
+Q2:
+
+Open the file in read mode and read its contents. Convert all words to lowercase to ensure the counting is case-insensitive. Split the text into individual words. Use a dictionary to store each unique word as a key and its occurrence count as the value. 
+
+
 Q4:
 
 #include <stdio.h>
