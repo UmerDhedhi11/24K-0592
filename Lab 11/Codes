@@ -87,6 +87,75 @@ int main(){
 	}
 }
 
+Q6:
+
+#include <stdio.h>
+
+struct Address{
+	char city[20];
+	int zip_code;
+};
+
+struct Employee{
+	char name[30];
+	int id;
+	float salary;
+	struct Address address;
+};
+
+int main(){
+	int n, i;
+	printf("Enter number of employees for which data is to be entered: ");
+	scanf("%d", &n);
+	struct Employee em[n];
+	for(i=0;i<n;i++){
+		printf("Enter Employee Name: ");
+		scanf(" %[^\n]s", em[i].name);
+		printf("Enter employee ID: ");
+		scanf("%d", &em[i].id);
+		printf("Enter salary: ");
+		scanf("%f", &em[i].salary);
+		getchar();
+		printf("Enter city: ");
+		scanf(" %[^\n]s", em[i].address.city);
+		printf("Enter zip code: ");
+		scanf("%d", &em[i].address.zip_code);
+		printf("\n");
+	}
+	FILE *wptr;
+	wptr = fopen("employee.txt", "w");
+	if(wptr == NULL){
+		printf("Error in opening file");
+	}
+	else{
+		for(i=0;i<n;i++){
+			fprintf(wptr, "Name: %s\n", em[i].name);
+			fprintf(wptr, "Employee ID: %d\n", em[i].id);
+			fprintf(wptr, "Salary: %.2f\n", em[i].salary);
+			fprintf(wptr, "City: %s\n", em[i].address.city);
+			fprintf(wptr, "Zip Code: %d\n", em[i].address.zip_code);
+		}
+	}
+	fclose(wptr);
+	FILE *rptr;
+	char name[30];
+	int e_id;
+	float sal;
+	char c[20];
+	int zc;
+	rptr = fopen("employee.txt", "r");
+	if(rptr == NULL){
+		printf("Error in opening file");
+	}
+	else{
+		printf("Reading from file: \n\n");
+		char temp[100];
+		while(fgets(temp, sizeof(temp), rptr)!= NULL){
+			printf("%s", temp);
+		}
+	}	
+}
+
 
 Q7:
 
