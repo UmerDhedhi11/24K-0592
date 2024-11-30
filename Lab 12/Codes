@@ -1,0 +1,148 @@
+Q1: 
+
+#include <stdio.h>
+
+int main(){
+	int n, i, sum = 0;
+	int *p;
+	printf("Enter the number of elements to be stored: ");
+	scanf("%d", &n);
+	int arr[n];
+	printf("Enter the elments line by line: \n");
+	for(i=0;i<n;i++){
+		scanf("%d", &arr[i]);
+	}
+	p = arr;
+	for(i=0;i<n;i++){
+		sum = sum + *(p + i);
+	}
+	printf("Sum of all the elements = %d", sum);
+}
+
+
+Q2:
+
+#include <stdio.h>
+
+void swapped(int *aPtr, int *bPtr, int *cPtr);
+
+int main(){
+	int x, y, z;
+	int *a = &x; 
+	int *b = &y;
+	int *c = &z;
+	
+	printf("Enter value of a: ");
+	scanf("%d", &x);
+	printf("Enter value of b: ");
+	scanf("%d", &y);
+	printf("Enter value of c: ");
+	scanf("%d", &z);
+	printf("Before swapping: %d | %d | %d\n", *a, *b, *c);
+	swapped(a, b ,c);
+	printf("After swapping: %d | %d | %d", *a, *b, *c);
+	return 0;
+}
+
+void swapped(int *aPtr, int *bPtr, int *cPtr){
+	int temp;
+	temp = *aPtr;
+	*aPtr = *cPtr;
+	*cPtr = *bPtr;
+	*bPtr = temp;
+}
+
+
+Q3: 
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int findLargest(int *num, int size);
+
+int main(){
+	int n, r, l;
+	printf("Enter initial size of array: ");
+	scanf("%d", &n);
+	int *arr = (int *)malloc(sizeof(int) * n);
+	if(arr == NULL){
+		printf("Memory allocation failed");
+	}
+	l = findLargest(arr, n);
+	printf("Largest Number: %d\n", l);
+	printf("Enter number of elements to resize: ");
+	scanf("%d", &r);
+	arr = (int *)malloc(sizeof(int) * r);
+	l = findLargest(arr, r);
+	printf("Largest number after resizing: %d", l);
+	return 0;
+}
+
+int findLargest(int *num, int size){
+	int i, largest = 0;
+	printf("Enter elements line by line: \n");
+	for(i=0;i<size;i++){
+		scanf("%d", &num[i]);
+	}
+	for(i=0;i<size;i++){
+		if(num[i] > largest){
+			largest = num[i];
+		}
+	}
+	return largest;
+}
+
+
+Q4:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+	int N, i;
+	char arr[40];
+	printf("Enter your full name: \n");
+	scanf(" %[^\n]s", arr);
+	printf("Enter the total number of characters in user's full name: ");
+	scanf("%d", &N);
+	char *name = (char *)calloc(N, sizeof(char));
+	for(i=0;i<N;i++){
+		name[i] = arr[i];
+	}
+	printf("Dynamic Array: %s", name);
+}
+
+
+Q5:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(){
+	int N, i, x = 0;
+	char arr[40];
+	printf("Enter your full name: \n");
+	scanf(" %[^\n]s", arr);
+	printf("Enter the total number of characters in user's full name: ");
+	scanf("%d", &N);
+	char *name = (char *)calloc(N, sizeof(char));
+	for(i=0;i<N;i++){
+		name[i] = arr[i];
+	}
+	printf("Dynamic Array: %s\n", name);
+	char id[10];
+	printf("Enter your student ID: ");
+	scanf("%s", id);
+	int l = strlen(id);
+	name = (char *)calloc(l, sizeof(char));
+	for(i=0;i<l;i++){
+		name[i] = id[i];
+	}
+	for(i=l;i<l+N;i++){
+		name[i] = arr[x];
+		x++;
+	}
+	printf("After Student ID: %s", name);
+	return 0;
+}
