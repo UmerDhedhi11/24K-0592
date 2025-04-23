@@ -66,4 +66,84 @@ int main(){
 
 Q2:
 
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main(){
+    string name, email, summary;
+    int yearsOfExperience;
+    cout << "Enter your name: ";
+    getline(cin, name);
+    cout << "Enter your email: ";
+    getline(cin, email);
+    cout << "Enter your years of experience: ";
+    cin >> yearsOfExperience;
+    cin.ignore();
+    cout << "Enter your professional summary: ";
+    getline(cin, summary);
+    ofstream outFile("resume.txt", ios::trunc);
+    if(!outFile){
+        cout << "Error opening file for writing." << endl;
+        return 1;
+    }
+    outFile << "Name: " << name << endl;
+    outFile << "Email: " << email << endl;
+    outFile << "Years of Experience: " << yearsOfExperience << endl;
+    outFile << "Summary: " << summary << endl;
+    outFile.close();
+    ifstream inFile("resume.txt");
+    if(!inFile){
+        cout << "Error opening file for reading." << endl;
+        return 1;
+    }
+    cout << "\n--- Resume Content ---" << endl;
+    string line;
+    while(getline(inFile, line)){
+        cout << line << endl;
+    }
+    inFile.close();
+    return 0;
+}
+
+
+Q3:
+
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main(){
+    ifstream chapter1("chapter1.txt");
+    ifstream chapter2("chapter2.txt");
+    ofstream book("book.txt", ios::app);
+    if(!chapter1 || !chapter2 || !book){
+        cout << "Error opening one of the files." << endl;
+        return 1;
+    }
+    string line;
+    while(getline(chapter1, line)){
+        book << line << endl;
+    }
+    book << endl;
+    while(getline(chapter2, line)){
+        book << line << endl;
+    }
+    chapter1.close();
+    chapter2.close();
+    book.close();
+    ifstream result("book.txt");
+    if(!result){
+        cout << "Error opening book.txt for reading." << endl;
+        return 1;
+    }
+    cout << "\n--- Combined Book Content ---" << endl;
+    while (getline(result, line)) {
+        cout << line << endl;
+    }
+    result.close();
+    return 0;
+}
 
